@@ -1,4 +1,4 @@
-# alcholwhale_rn
+# 술고래(alcholwhale)
 술고래 프로젝트 리액트네이티브 버전입니다.
 
 ## 설치방법
