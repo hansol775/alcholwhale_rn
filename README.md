@@ -1,4 +1,6 @@
 # 술고래(alcholwhale)
+![alcohol-whale_main-page](https://user-images.githubusercontent.com/46973058/66883817-273a9280-f00a-11e9-8d1b-366878125e78.png)
+
 술고래 프로젝트 리액트네이티브 버전입니다.
 
 ## 설치방법
