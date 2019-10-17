@@ -7,10 +7,11 @@ import Rate from '../src/pages/Rate';
 import Bell from '../src/pages/Bell';
 import MyPage from '../src/pages/MyPage';
 import Splash from "../src/pages/Splash";
-
+import Search from '../src/pages/Search';
 
 const HomeTab = createStackNavigator({
     Main: {screen: Main},
+    Search: {screen: Search}
 },{
     initialRouteName: 'Main',
     navigationOptions: {
