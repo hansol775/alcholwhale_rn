@@ -8,10 +8,12 @@ import Bell from '../src/pages/Bell';
 import MyPage from '../src/pages/MyPage';
 import Splash from "../src/pages/Splash";
 import Search from '../src/pages/Search';
+import DrinkDetail from '../src/pages/DrinkDetail';
 
 const HomeTab = createStackNavigator({
     Main: {screen: Main},
-    Search: {screen: Search}
+    Search: {screen: Search},
+    DrinkDetail: {screen: DrinkDetail}
 },{
     initialRouteName: 'Main',
     navigationOptions: {

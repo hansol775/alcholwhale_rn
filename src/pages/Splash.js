@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Image, View, SafeAreaView, Text, TextInput, Dimensions} from 'react-native';
+import {Image, View, SafeAreaView, Text, ImageBackground, Dimensions} from 'react-native';
 import {inject, observer} from "mobx-react";
 import { Container, Content } from 'native-base';
 
@@ -30,9 +30,9 @@ export default class Splash extends Component {
     render(){
         return (
             <SafeAreaView style={{flex:1}}>
-                <Container style={{justifyContent:'center', alignItems:'center'}}>
+                <ImageBackground source={require('../images/loading_png.png')} style={{ width:'100%', height:'100%', justifyContent:'center', alignItems:'center'}}>
                     <Image source={require('../images/alcohol-whale_loading-page.png')} style={{width: this.width, height:200}} resizeMode='contain'/>
-                </Container>
+                </ImageBackground>
             </SafeAreaView>
         )
     }
