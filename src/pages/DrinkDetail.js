@@ -40,7 +40,7 @@ export default class DrinkDetail extends Component {
                         </View>
                         <View style={{flex:1, backgroundColor:'#F2F2F2'}}> 
                             <View style={{flex:0.9, flexDirection:'row', marginBottom:20, backgroundColor:'#FFF'}}>
-                                <View style={{flex:0.3, marginHorizontal:10, justifyContent:'center', alignItems:'center'}}>
+                                <View style={{flex:0.3, marginHorizontal:15, justifyContent:'center', alignItems:'center'}}>
                                     <Image source={require('../images/mokup_1.png')} style={{width:100, height:250}}/>
                                 </View>
                                 
@@ -69,6 +69,11 @@ export default class DrinkDetail extends Component {
                                     <Text style={{color:'#000', fontSize:14, marginRight:10}}>더 많은 추천 받기</Text>
                                     <Image source={require('../icons/arrow_viewmore.png')} style={{width:15, height:15}} resizeMode='contain'/>
                                 </TouchableOpacity>
+                            </View>
+                        </View>
+                        <View style={{backgroundColor:'#F4F1EE'}}>
+                            <View style={{padding:20, backgroundColor:'#F2F2F2'}}>
+                                <Text style={{color:'#000', fontSize:16, fontWeight:'400'}}>술고래 <Text style={{color:'#BB996A', fontSize:16, fontWeight:'400'}}>{drink} 랭킹</Text></Text>
                             </View>
                         </View>
                     </Content>

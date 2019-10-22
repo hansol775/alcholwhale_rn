@@ -9,7 +9,9 @@ import MyPage from '../src/pages/MyPage';
 import Splash from "../src/pages/Splash";
 import Search from '../src/pages/Search';
 import DrinkDetail from '../src/pages/DrinkDetail';
+import AlcholDetail from '../src/pages/AlcholDetail';
 
+// 메인탭 화면들
 const HomeTab = createStackNavigator({
     Main: {screen: Main},
     Search: {screen: Search},
@@ -23,6 +25,7 @@ const HomeTab = createStackNavigator({
 })
 
 
+// 평점탭 화면들
 const RateTab = createStackNavigator({
     Rate: {screen: Rate},
 },{
@@ -33,6 +36,7 @@ const RateTab = createStackNavigator({
     }
 })
 
+// 소식탭 화면들
 const BellTab = createStackNavigator({
     Bell: {screen: Bell},
 },{
@@ -44,7 +48,7 @@ const BellTab = createStackNavigator({
 })
 
 
-
+// 마이페이지 화면들
 const MyPageTab = createStackNavigator({
     MyPage: {screen: MyPage},
 },{
@@ -54,6 +58,7 @@ const MyPageTab = createStackNavigator({
         headerBackTitle: '뒤로',
     }
 })
+
 
 const MainTab = createBottomTabNavigator({
     Main: HomeTab,
@@ -111,8 +116,7 @@ const AppNavigator = createStackNavigator({
     // Login: { screen: Login},
     // SignUp: {screen: SignUp},
     MainTab: { screen: MainTab},
-    // ImageSelect : {screen: ImageSelect},
-    // ProfileImageSelect: {screen: ProfileImageSelect}
+    AlcholDetail: {screen: AlcholDetail}
 },{
     initialRouteName: 'Splash',
     transitionConfig: (navigation) => {
