@@ -10,6 +10,7 @@ import Splash from "../src/pages/Splash";
 import Search from '../src/pages/Search';
 import DrinkDetail from '../src/pages/DrinkDetail';
 import AlcholDetail from '../src/pages/AlcholDetail';
+import BookMark from '../src/pages/BookMark'; // router위에 만든 화면을 추가해준다.
 
 // 메인탭 화면들
 const HomeTab = createStackNavigator({
@@ -51,6 +52,7 @@ const BellTab = createStackNavigator({
 // 마이페이지 화면들
 const MyPageTab = createStackNavigator({
     MyPage: {screen: MyPage},
+    BookMark: {screen: BookMark}, // 마이페이지에서 쓰이는 화면이라 마이페이지스택에 넣어준다. screen: '스크린이름' 이 이름으로 쓰임.
 },{
     initialRouteName: 'MyPage',
     navigationOptions: {
