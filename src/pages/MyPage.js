@@ -38,7 +38,7 @@ export default class MyPage extends Component {
           <TouchableOpacity>
             <Image
               style={{height: 20, width: 20, marginLeft: 23, marginTop: 23}}
-              source={require('../images/settings.png')}
+              source={require('../icons/settings.png')}
             />
           </TouchableOpacity>
           <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
@@ -68,7 +68,7 @@ export default class MyPage extends Component {
                 }}>
                 <Image
                   style={{width: 12.3, height: 15.8}}
-                  source={require('../images/bookmark.png')}
+                  source={require('../icons/bookmark.png')}
                 />
               </View>
             </TouchableOpacity>
@@ -302,7 +302,7 @@ export default class MyPage extends Component {
               }}>
               <Image
                 style={{height: 10, width: 10}}
-                source={require('../images/next.png')}
+                source={require('../icons/next_arrow.png')}
               />
             </View>
           </TouchableOpacity>
