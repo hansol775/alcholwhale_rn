@@ -31,8 +31,8 @@ export default class BookMark extends Component {
   render() {
     return (
       <SafeAreaView style={{flex: 1}}>
-        <Container style={{backgroundColor: '##FFFFFF'}}>
-          <View style={{flex: 0.02, margin: 20}}>
+        <Container style={{backgroundColor: '##FFFFFF', flex: 0.02}}>
+          <View style={{margin: 20}}>
             <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
               <Image
                 source={require('../icons/arrow_back.png')}
@@ -57,7 +57,8 @@ export default class BookMark extends Component {
                 제품 (4)
               </Text>
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => this.props.navigation.navigate('Brand')}>
               <Text style={{marginRight: 34, fontSize: 18, color: '#9F9F9F'}}>
                 브랜드 (2)
               </Text>
