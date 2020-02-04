@@ -10,6 +10,7 @@ import {
 import {inject, observer} from 'mobx-react';
 import {Container, Content} from 'native-base';
 import {ScrollView} from 'react-native-gesture-handler';
+import {Tabs, Tab, TabHeading} from 'native-base';
 
 @inject('userStore')
 @observer
@@ -23,10 +24,15 @@ export default class BookMark extends Component {
     this.state = {
       email: null,
       password: null,
+      tabFlag: 0,
     };
     this.window = Dimensions.get('window');
     this.inputWidth = this.window.width - 40;
   }
+
+  changeTabScreen = i => {
+    this.setState({tabFlag: i});
+  };
 
   render() {
     return (
@@ -41,7 +47,84 @@ export default class BookMark extends Component {
               />
             </TouchableOpacity>
           </View>
-          <View
+          <View style={{flex: 1}}>
+            <Tabs
+              locked={true}
+              tabBarUnderlineStyle={{backgroundColor: '#000'}}
+              onChangeTab={({i}) => this.changeTabScreen(i)}>
+              <Tab
+                heading={
+                  <TabHeading
+                    style={{backgroundColor: '#FFF', flexDirection: 'column'}}>
+                    <Text
+                      style={
+                        this.state.tabFlag == 0
+                          ? styles.selectTabText
+                          : styles.defaultTabText
+                      }>
+                      제품별
+                    </Text>
+                  </TabHeading>
+                }>
+                <Content>
+                  <View
+                    style={{
+                      backgroundColor: '#F8F8F8',
+                      height: 40,
+                      justifyContent: 'center',
+                    }}>
+                    {/* <Text style={{fontSize:12, marginLeft:30}}>총 {this.state.products.length}건</Text> */}
+                  </View>
+                  <View
+                    style={{
+                      flex: 1,
+                      justifyContent: 'space-around',
+                      alignItems: 'center',
+                    }}>
+                    {/* <FlatList
+                                                data={this.state.products}
+                                                numColumns={3}
+                                                renderItem={({item}) => ( this.renderProduct(item))}
+                                                keyExtractor={item => item.id}
+                                                removeClippedSubviews
+                                            /> */}
+                  </View>
+                </Content>
+              </Tab>
+              <Tab
+                heading={
+                  <TabHeading
+                    style={{backgroundColor: '#FFF', flexDirection: 'column'}}>
+                    <Text
+                      style={
+                        this.state.tabFlag == 1
+                          ? styles.selectTabText
+                          : styles.defaultTabText
+                      }>
+                      사람별
+                    </Text>
+                  </TabHeading>
+                }>
+                <Content>
+                  <View
+                    style={{
+                      backgroundColor: '#F8F8F8',
+                      height: 40,
+                      justifyContent: 'center',
+                    }}>
+                    <Text style={{fontSize: 12, marginLeft: 30}}>총 3건</Text>
+                  </View>
+                  <View style={{marginHorizontal: 30, marginTop: 20}}>
+                    <TouchableOpacity>
+                      {/* <Image source={require('../images/twice.jpeg')} style={{width:100, height:100, borderRadius:10, marginBottom:5}}/> */}
+                      <Text style={{fontSize: 12}}>트와이스</Text>
+                    </TouchableOpacity>
+                  </View>
+                </Content>
+              </Tab>
+            </Tabs>
+          </View>
+          {/* <View
             style={{
               margin: 20,
               flexDirection: 'row',
@@ -57,8 +140,7 @@ export default class BookMark extends Component {
                 제품 (4)
               </Text>
             </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => this.props.navigation.navigate('Brand')}>
+            <TouchableOpacity>
               <Text style={{marginRight: 34, fontSize: 18, color: '#9F9F9F'}}>
                 브랜드 (2)
               </Text>
@@ -627,9 +709,21 @@ export default class BookMark extends Component {
                 </View>
               </View>
             </Content>
-          </ScrollView>
+          </ScrollView> */}
         </Container>
       </SafeAreaView>
     );
   }
 }
+
+const styles = {
+  defaultTabText: {
+    color: '#6A6A6A',
+    fontSize: 15,
+  },
+  selectTabText: {
+    color: '#000',
+    fontWeight: 'bold',
+    fontSize: 15,
+  },
+};
