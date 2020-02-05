@@ -1,28 +1,36 @@
-import React, {Component} from 'react';
-import {Easing, Animated, Image} from 'react-native';
+import React, { Component } from 'react';
+import { Easing, Animated, Image } from 'react-native';
 import {
   createStackNavigator,
   createAppContainer,
   createBottomTabNavigator,
 } from 'react-navigation';
 import StackViewStyleInterpolator from 'react-navigation-stack/src/views/StackView/StackViewStyleInterpolator';
-import Main from '../src/pages/Main';
-import Rate from '../src/pages/Rate';
-import Bell from '../src/pages/Bell';
-import MyPage from '../src/pages/MyPage';
+import Main from '../src/pages/HomeTab/Main';
+import Rate from '../src/pages/RateTab/Rate';
+import Bell from '../src/pages/BellTab/Bell';
+import MyPage from '../src/pages/MyPageTab/MyPage';
 import Splash from '../src/pages/Splash';
-import Search from '../src/pages/Search';
+import Search from '../src/pages/HomeTab/Search';
 import DrinkDetail from '../src/pages/DrinkDetail';
 import AlcholDetail from '../src/pages/AlcholDetail';
-import BookMark from '../src/pages/BookMark';
-import Brand from '../src/pages/Brand'; // router위에 만든 화면을 추가해준다.
+import BookMark from '../src/pages/MyPageTab/BookMark';
+import Settings from '../src/pages/MyPageTab/Settings';
+import Account_Settings from '../src/pages/MyPageTab/Account_Settings';
+import Service_Settings from '../src/pages/MyPageTab/Service_Settings';
+import Notice_Settings from '../src/pages/MyPageTab/Notice_Settings';
+import ServiceCenter_Settings from '../src/pages/MyPageTab/ServiceCenter_Settings';
+import Info_Settings from '../src/pages/MyPageTab/Info_Settings';
+import FAQ_Settings from '../src/pages/MyPageTab/FAQ_Settings';
+import Drank_Settings from '../src/pages/MyPageTab/Drank_Settings';
+import Review from '../src/pages/MyPageTab/Review';
 
 // 메인탭 화면들
 const HomeTab = createStackNavigator(
   {
-    Main: {screen: Main},
-    Search: {screen: Search},
-    DrinkDetail: {screen: DrinkDetail},
+    Main: { screen: Main },
+    Search: { screen: Search },
+    DrinkDetail: { screen: DrinkDetail },
   },
   {
     initialRouteName: 'Main',
@@ -36,7 +44,7 @@ const HomeTab = createStackNavigator(
 // 평점탭 화면들
 const RateTab = createStackNavigator(
   {
-    Rate: {screen: Rate},
+    Rate: { screen: Rate },
   },
   {
     initialRouteName: 'Rate',
@@ -50,7 +58,7 @@ const RateTab = createStackNavigator(
 // 소식탭 화면들
 const BellTab = createStackNavigator(
   {
-    Bell: {screen: Bell},
+    Bell: { screen: Bell },
   },
   {
     initialRouteName: 'Bell',
@@ -64,10 +72,19 @@ const BellTab = createStackNavigator(
 // 마이페이지 화면들
 const MyPageTab = createStackNavigator(
   {
-    MyPage: {screen: MyPage},
-    BookMark: {screen: BookMark},
-    Brand: {screen: Brand}, // 마이페이지에서 쓰이는 화면이라 마이페이지스택에 넣어준다. screen: '스크린이름' 이 이름으로 쓰임.
+    MyPage: { screen: MyPage },
+    BookMark: { screen: BookMark },
+    Settings: { screen: Settings },
+    Account_Settings: { screen: Account_Settings },
+    Service_Settings: { screen: Service_Settings },
+    Notice_Settings: { screen: Notice_Settings },
+    ServiceCenter_Settings: { screen: ServiceCenter_Settings },
+    Info_Settings: { screen: Info_Settings },
+    FAQ_Settings: { screen: FAQ_Settings },
+    Drank_Settings: { screen: Drank_Settings },
+    Review: { screen: Review } // 마이페이지에서 쓰이는 화면이라 마이페이지스택에 넣어준다. screen: '스크린이름' 이 이름으로 쓰임.
   },
+
   {
     initialRouteName: 'MyPage',
     navigationOptions: {
@@ -90,9 +107,9 @@ const MainTab = createBottomTabNavigator(
       header: null,
       headerBackTitle: '뒤로',
     },
-    defaultNavigationOptions: ({navigation}) => ({
-      tabBarIcon: ({focused}) => {
-        const {routeName} = navigation.state;
+    defaultNavigationOptions: ({ navigation }) => ({
+      tabBarIcon: ({ focused }) => {
+        const { routeName } = navigation.state;
         switch (routeName) {
           case 'Main':
             return (
@@ -103,7 +120,7 @@ const MainTab = createBottomTabNavigator(
                     : require('../src/icons/home_stroke.png')
                 }
                 resizeMode={'contain'}
-                style={{width: 25, height: 25, marginTop: 3}}
+                style={{ width: 25, height: 25, marginTop: 3 }}
               />
             );
             break;
@@ -116,7 +133,7 @@ const MainTab = createBottomTabNavigator(
                     : require('../src/icons/rate_stroke.png')
                 }
                 resizeMode={'contain'}
-                style={{width: 25, height: 25, marginTop: 3}}
+                style={{ width: 25, height: 25, marginTop: 3 }}
               />
             );
             break;
@@ -129,7 +146,7 @@ const MainTab = createBottomTabNavigator(
                     : require('../src/icons/notice_stroke.png')
                 }
                 resizeMode={'contain'}
-                style={{width: 25, height: 25, marginTop: 3}}
+                style={{ width: 25, height: 25, marginTop: 3 }}
               />
             );
             break;
@@ -142,7 +159,7 @@ const MainTab = createBottomTabNavigator(
                     : require('../src/icons/mypage_stroke.png')
                 }
                 resizeMode={'contain'}
-                style={{width: 25, height: 25, marginTop: 3}}
+                style={{ width: 25, height: 25, marginTop: 3 }}
               />
             );
             break;
@@ -163,11 +180,11 @@ const MainTab = createBottomTabNavigator(
 
 const AppNavigator = createStackNavigator(
   {
-    Splash: {screen: Splash},
+    Splash: { screen: Splash },
     // Login: { screen: Login},
     // SignUp: {screen: SignUp},
-    MainTab: {screen: MainTab},
-    AlcholDetail: {screen: AlcholDetail},
+    MainTab: { screen: MainTab },
+    AlcholDetail: { screen: AlcholDetail },
   },
   {
     initialRouteName: 'Splash',
