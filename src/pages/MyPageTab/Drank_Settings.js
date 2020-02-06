@@ -24,6 +24,7 @@ export default class Drank_Settings extends Component {
         this.state = {
             email: null,
             password: null,
+            tabFlag: 0
         };
         this.window = Dimensions.get('window');
         this.inputWidth = this.window.width - 40;
@@ -57,7 +58,7 @@ export default class Drank_Settings extends Component {
                             <Tab
                                 heading={
 
-                                    <TabHeading style={{ backgroundColor: '#FFF', flexDirection: 'column' }}
+                                    <TabHeading style={{ backgroundColor: '#FFF', flexDirection: 'column', }}
                                     >
 
                                         <Text style={this.state.tabFlag == 0 ? styles.selectTabText : styles.defaultTabText}>소주</Text>
