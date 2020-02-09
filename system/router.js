@@ -32,7 +32,6 @@ const HomeTab = createStackNavigator(
   {
     Main: { screen: Main },
     Search: { screen: Search },
-    DrinkDetail: { screen: DrinkDetail },
   },
   {
     initialRouteName: 'Main',
@@ -188,7 +187,8 @@ const AppNavigator = createStackNavigator(
     MainTab: { screen: MainTab },
     AlcholDetail: { screen: AlcholDetail },
     Review_More: { screen: Review_More },
-    Review_Writing: { screen: Review_Writing }
+    Review_Writing: { screen: Review_Writing },
+    DrinkDetail: { screen: DrinkDetail },
   },
   {
     initialRouteName: 'Splash',
