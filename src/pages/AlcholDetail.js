@@ -279,10 +279,12 @@ export default class AlcholDetail extends Component {
                                 </View>
                             </View>
                         </View>
-                        <View style={{ flex: 1, justifyContent: 'flex-end', alignItems: 'flex-end', flexDirection: 'row', marginHorizontal: 23, marginBottom: 23 }}>
-                            <Text style={{ marginRight: 5 }}>50개의 리뷰 더보기</Text>
-                            <Image source={require('../icons/arrow_viewmore.png')} style={{ width: 15, height: 15 }} resizeMode='contain' />
-                        </View>
+                        <TouchableOpacity onPress={() => this.props.navigation.navigate('Review_More')}>
+                            <View style={{ flex: 1, justifyContent: 'flex-end', alignItems: 'flex-end', flexDirection: 'row', marginHorizontal: 23, marginBottom: 23 }}>
+                                <Text style={{ marginRight: 5 }}>50개의 리뷰 더보기</Text>
+                                <Image source={require('../icons/arrow_viewmore.png')} style={{ width: 15, height: 15 }} resizeMode='contain' />
+                            </View>
+                        </TouchableOpacity>
                         <View style={{ flex: 1, backgroundColor: '#F4F1EE', paddingHorizontal: 23, paddingVertical: 63 }}>
                             <FlatList
                                 data={this.state.mokupData}
@@ -298,8 +300,8 @@ export default class AlcholDetail extends Component {
                         direction="up"
                         style={{ backgroundColor: '#FFF' }}
                         position={"bottomRight"}
-                        onPress={() => alert('하위')}>
-                        <TouchableOpacity>
+                    >
+                        <TouchableOpacity onPress={() => this.props.navigation.navigate('Review_Writing')}>
                             <Image source={require('../icons/write_stroke.png')} style={{ width: 25, height: 25 }} />
                         </TouchableOpacity>
                     </Fab>

@@ -24,6 +24,8 @@ import Info_Settings from '../src/pages/MyPageTab/Info_Settings';
 import FAQ_Settings from '../src/pages/MyPageTab/FAQ_Settings';
 import Drank_Settings from '../src/pages/MyPageTab/Drank_Settings';
 import Review from '../src/pages/MyPageTab/Review';
+import Review_More from '../src/pages/Review_More';
+import Review_Writing from '../src/pages/Review_Writing';
 
 // 메인탭 화면들
 const HomeTab = createStackNavigator(
@@ -185,6 +187,8 @@ const AppNavigator = createStackNavigator(
     // SignUp: {screen: SignUp},
     MainTab: { screen: MainTab },
     AlcholDetail: { screen: AlcholDetail },
+    Review_More: { screen: Review_More },
+    Review_Writing: { screen: Review_Writing }
   },
   {
     initialRouteName: 'Splash',

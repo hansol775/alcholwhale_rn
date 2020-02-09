@@ -54,7 +54,7 @@ export default class Drank_Settings extends Component {
 
                     <View style={{ flex: 1 }}>
 
-                        <Tabs style={{ borderTopWidth: 0.5, }} locked={true} tabBarUnderlineStyle={{ backgroundColor: '#bb996a' }} onChangeTab={({ i }) => this.changeTabScreen(i)}>
+                        <Tabs style={{ borderTopWidth: 0.5, }} locked={true} tabBarUnderlineStyle={{ backgroundColor: '#bb996a', width: 50, marginLeft: 20 }} onChangeTab={({ i }) => this.changeTabScreen(i)}>
                             <Tab
                                 heading={
 

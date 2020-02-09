@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Image, View, SafeAreaView, Text, TextInput, Dimensions, TouchableOpacity } from 'react-native';
+import { Image, View, SafeAreaView, Text, TextInput, Dimensions, TouchableOpacity, FlatList } from 'react-native';
 import { inject, observer } from "mobx-react";
 import { Container, Content } from 'native-base';
 
@@ -13,13 +13,54 @@ export default class DrinkDetail extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            email: null,
-            password: null
+            active: true,
+            mokupData: [
+                {
+                    id: 1,
+                    name: '한라산',
+                    company: '화이트진로',
+                    star: 3.5,
+                },
+                {
+                    id: 2,
+                    name: '한라산',
+                    company: '화이트진로',
+                    star: 3.5
+                },
+                {
+                    id: 3,
+                    name: '한라산',
+                    company: '화이트진로',
+                    star: 3.5
+                },
+            ]
         };
         this.window = Dimensions.get('window');
         this.width = this.window.width
     }
 
+
+    renderRankingList(item) {
+        return (
+            <View style={{ backgroundColor: '#FFF', marginHorizontal: 13 }}>
+                <View style={{ width: 144, height: 253, backgroudColor: '#FFF', shadowColor: '#000', shadowOpacity: 0.2 }}>
+                    <Image style={{ width: 24, height: 24 }} source={require('../icons/ranking_1.png')} />
+                    <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+                        <Image source={require('../images/mokup_2.png')} style={{ width: 61, height: 148, paddingHorizontal: 45, paddingVertical: 19 }} resizeMode='contain' />
+                    </View>
+                    <View style={{ marginHorizontal: 18 }}>
+                        <Text style={{ fontSize: 16, color: '#353535', fontWeight: '400', marginBottom: 5, marginTop: 16 }}>{item.name}</Text>
+                        <Text style={{ fontSize: 12, color: '#9B9B9B', marginBottom: 5 }}>{item.company}</Text>
+                        <View style={{ flexDirection: 'row' }}>
+                            <Image source={require('../icons/rate_fill_color.png')} style={{ width: 9.4, height: 9, marginRight: 5 }} resizeMode='contain' />
+                            <Text style={{ fontSize: 11, color: '#BB996A' }}>{item.star}</Text>
+                        </View>
+                    </View>
+
+                </View>
+            </View>
+        )
+    }
 
     render() {
         const drink = this.props.navigation.getParam('drink', null)
@@ -71,9 +112,25 @@ export default class DrinkDetail extends Component {
                                 </TouchableOpacity>
                             </View>
                         </View>
-                        <View style={{ backgroundColor: '#F4F1EE' }}>
-                            <View style={{ padding: 20, backgroundColor: '#F2F2F2' }}>
+                        <View style={{ backgroundColor: '#F4F1EE', flex: 1 }}>
+                            <View style={{ paddingHorizontal: 20, paddingTop: 20, }}>
                                 <Text style={{ color: '#000', fontSize: 16, fontWeight: '400' }}>술고래 <Text style={{ color: '#BB996A', fontSize: 16, fontWeight: '400' }}>{drink} 랭킹</Text></Text>
+                                <Text style={{ color: '#353535', fontSize: 9, marginTop: 6 }}>2019.01.10</Text>
+                            </View>
+                            <View style={{ flex: 1, backgroundColor: '#F4F1EE', paddingHorizontal: 18, paddingTop: 18, paddingBottom: 25 }}>
+                                <FlatList
+                                    data={this.state.mokupData}
+                                    renderItem={({ item }) => (this.renderRankingList(item))}
+                                    keyExtractor={item => item.id.toString()}
+                                    horizontal
+                                    showsHorizontalScrollIndicator={false}
+                                />
+                            </View>
+                            <View style={{ flex: 0.1, justifyContent: 'flex-end', alignItems: 'flex-end', marginRight: 20, marginBottom: 20 }}>
+                                <TouchableOpacity style={{ flexDirection: 'row' }}>
+                                    <Text style={{ color: '#000', fontSize: 14, marginRight: 10 }}>더보기</Text>
+                                    <Image source={require('../icons/arrow_viewmore.png')} style={{ width: 15, height: 15 }} resizeMode='contain' />
+                                </TouchableOpacity>
                             </View>
                         </View>
                     </Content>
