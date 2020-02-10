@@ -136,8 +136,8 @@ export default class FAQ_Settings extends Component {
                             renderContent={this._renderContent}
                             activeSections={this.state.activeSections}
                             onChange={(activeSections) => this.setState({ activeSections })}
-                            // containerStyle={{ backgroundColor: 'aqua' }}
-                            underlayColor={'aqua'}
+                        // containerStyle={{ backgroundColor: 'aqua' }}
+                        // underlayColor={'aqua'}
                         />
                     </Content>
                 </Container>

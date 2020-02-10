@@ -19,7 +19,7 @@ export default class AlcholDetail extends Component {
                     id: 1,
                     name: '참이슬',
                     company: '화이트진로',
-                    star: 3.5
+                    star: 3.5,
                 },
                 {
                     id: 2,
@@ -310,3 +310,4 @@ export default class AlcholDetail extends Component {
         )
     }
 }
+

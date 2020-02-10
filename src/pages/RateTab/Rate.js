@@ -7,10 +7,12 @@ import {
   TextInput,
   Dimensions,
   TouchableOpacity,
-  ImageBackgroundComponent
+  ImageBackgroundComponent,
+  FlatList
 } from 'react-native';
 import { inject, observer } from 'mobx-react';
 import { Container, Content, Tabs, Tab, TabHeading } from 'native-base';
+import { ScrollView } from 'react-native-gesture-handler';
 
 
 @inject('userStore')
@@ -23,9 +25,34 @@ export default class Rate extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: null,
-      password: null,
-      tabFlag: 0
+      tabFlag: 0,
+      active: true,
+      mokupData: [
+        {
+          id: 1,
+          name: '참이슬',
+          company: '화이트진로',
+          star: 3.5
+        },
+        {
+          id: 2,
+          name: '참이슬',
+          company: '화이트진로',
+          star: 3.5
+        },
+        {
+          id: 3,
+          name: '참이슬',
+          company: '화이트진로',
+          star: 3.5
+        },
+        {
+          id: 4,
+          name: '참이슬',
+          company: '화이트진로',
+          star: 3.5
+        },
+      ]
     };
     this.window = Dimensions.get('window');
     this.inputWidth = this.window.width - 40;
@@ -35,7 +62,35 @@ export default class Rate extends Component {
     this.setState({ tabFlag: i })
   }
 
+  _renderRankingList(item) {
+    return (
+      <View>
+        <View style={{ backgroundColor: '#ffffff', flexDirection: 'row', paddingVertical: 23, paddingHorizontal: 18 }}>
+          <Image style={{ width: 85, height: 104 }} source={require('../../images/cham.jpg')} />
+          <View style={{ paddingLeft: 11, width: 240 }}>
+            <View style={{ marginTop: 12, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+              <Text style={{ fontSize: 16, fontWeight: '600', color: '#000', }}>{item.name}</Text>
+              <Image style={{ width: 11, height: 14, }}
+                source={require('../../icons/bookmark_fill_color.png')} />
+            </View>
+            <Text style={{ fontSize: 12, color: '#9b9b9b', marginTop: 7, marginBottom: 17 }}>{item.company}</Text>
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <Image source={require('../../icons/rate_fill_color.png')} style={{ width: 30, height: 30, marginRight: 10 }} resizeMode='contain' />
+              <Image source={require('../../icons/rate_fill_color.png')} style={{ width: 30, height: 30, marginRight: 10 }} resizeMode='contain' />
+              <Image source={require('../../icons/rate_fill_color.png')} style={{ width: 30, height: 30, marginRight: 10 }} resizeMode='contain' />
+              <Image source={require('../../icons/rate_stroke.png')} style={{ width: 30, height: 30, marginRight: 10 }} resizeMode='contain' />
+              <Image source={require('../../icons/rate_stroke.png')} style={{ width: 30, height: 30, marginRight: 15 }} resizeMode='contain' />
+              <Text style={{ color: '#BB996A', fontSize: 16, fontWeight: '500' }}>{item.star}</Text>
+            </View>
+          </View>
+        </View>
+        <View style={{ backgroundColor: '#9b9b9b', marginLeft: 18, height: 0.8, }} />
+      </View>
+    )
+  }
+
   render() {
+
     return (
       <SafeAreaView style={{ flex: 1 }}>
         <Container backgroundColor="#FFFFFF">
@@ -46,7 +101,7 @@ export default class Rate extends Component {
           <Content>
             <View style={{ flex: 1 }}>
 
-              <Tabs locked={true} tabBarUnderlineStyle={{ backgroundColor: '#bb996a' }} onChangeTab={({ i }) => this.changeTabScreen(i)}>
+              <Tabs locked={true} tabBarUnderlineStyle={{ backgroundColor: '#bb996a', width: 35, marginLeft: 30 }} onChangeTab={({ i }) => this.changeTabScreen(i)}>
                 <Tab
                   heading={
 
@@ -57,103 +112,11 @@ export default class Rate extends Component {
                     </TabHeading>}>
 
                   <Content>
-                    <View style={{ backgroundColor: '#ffffff', flexDirection: 'row', paddingVertical: 23, paddingHorizontal: 18 }}>
-                      <Image style={{ width: 85, height: 104 }} source={require('../../images/cham.jpg')} />
-                      <View style={{ paddingLeft: 11, width: 240 }}>
-                        {/* <View style={{ flexDirection: 'row', marginBottom: 10 }}> */}
-                        {/* <View style={{ flex: 1, flexDirection: 'row', }}> */}
-                        <View style={{ marginTop: 12, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-                          <Text style={{ fontSize: 16, fontWeight: '600', color: '#000', }}>참이슬</Text>
-                          <Image style={{ width: 11, height: 14, }}
-                            source={require('../../icons/bookmark_fill_color.png')} />
-                        </View>
-                        <Text style={{ fontSize: 12, color: '#9b9b9b', marginTop: 7, marginBottom: 17 }}>하이트진로</Text>
-                        {/* </View> */}
-                        {/* </View> */}
-                        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-                          <Image source={require('../../icons/rate_fill_color.png')} style={{ width: 30, height: 30, marginRight: 5 }} resizeMode='contain' />
-                          <Image source={require('../../icons/rate_fill_color.png')} style={{ width: 30, height: 30, marginRight: 5 }} resizeMode='contain' />
-                          <Image source={require('../../icons/rate_fill_color.png')} style={{ width: 30, height: 30, marginRight: 5 }} resizeMode='contain' />
-                          <Image source={require('../../icons/rate_stroke.png')} style={{ width: 30, height: 30, marginRight: 5 }} resizeMode='contain' />
-                          <Image source={require('../../icons/rate_stroke.png')} style={{ width: 30, height: 30, marginRight: 15 }} resizeMode='contain' />
-                          <Text style={{ color: '#BB996A', fontSize: 16, fontWeight: '500' }}>3.0</Text>
-                        </View>
-                      </View>
-                    </View>
-                    <View style={{ backgroundColor: '#9b9b9b', marginLeft: 18, height: 0.8, }} />
-                    <View style={{ backgroundColor: '#ffffff', flexDirection: 'row', paddingVertical: 23, paddingHorizontal: 18 }}>
-                      <Image style={{ width: 85, height: 104 }} source={require('../../images/cham.jpg')} />
-                      <View style={{ paddingLeft: 11, width: 240 }}>
-                        {/* <View style={{ flexDirection: 'row', marginBottom: 10 }}> */}
-                        {/* <View style={{ flex: 1, flexDirection: 'row', }}> */}
-                        <View style={{ marginTop: 12, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-                          <Text style={{ fontSize: 16, fontWeight: '600', color: '#000', }}>참이슬</Text>
-                          <Image style={{ width: 11, height: 14, }}
-                            source={require('../../icons/bookmark_fill_grey.png')} />
-                        </View>
-                        <Text style={{ fontSize: 12, color: '#9b9b9b', marginTop: 7, marginBottom: 17 }}>화이트진로</Text>
-                        {/* </View> */}
-                        {/* </View> */}
-                        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-                          <Image source={require('../../icons/rate_stroke.png')} style={{ width: 30, height: 30, marginRight: 5 }} resizeMode='contain' />
-                          <Image source={require('../../icons/rate_stroke.png')} style={{ width: 30, height: 30, marginRight: 5 }} resizeMode='contain' />
-                          <Image source={require('../../icons/rate_stroke.png')} style={{ width: 30, height: 30, marginRight: 5 }} resizeMode='contain' />
-                          <Image source={require('../../icons/rate_stroke.png')} style={{ width: 30, height: 30, marginRight: 5 }} resizeMode='contain' />
-                          <Image source={require('../../icons/rate_stroke.png')} style={{ width: 30, height: 30, marginRight: 15 }} resizeMode='contain' />
-                          <Text style={{ color: '#9b9b9b', fontSize: 16, fontWeight: '500' }}>0.0</Text>
-                        </View>
-                      </View>
-                    </View>
-                    <View style={{ backgroundColor: '#9b9b9b', marginLeft: 18, height: 0.8, }} />
-                    <View style={{ backgroundColor: '#ffffff', flexDirection: 'row', paddingVertical: 23, paddingHorizontal: 18 }}>
-                      <Image style={{ width: 85, height: 104 }} source={require('../../images/cham.jpg')} />
-                      <View style={{ paddingLeft: 11, width: 240 }}>
-                        {/* <View style={{ flexDirection: 'row', marginBottom: 10 }}> */}
-                        {/* <View style={{ flex: 1, flexDirection: 'row', }}> */}
-                        <View style={{ marginTop: 12, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-                          <Text style={{ fontSize: 16, fontWeight: '600', color: '#000', }}>참이슬</Text>
-                          <Image style={{ width: 11, height: 14, }}
-                            source={require('../../icons/bookmark_fill_grey.png')} />
-                        </View>
-                        <Text style={{ fontSize: 12, color: '#9b9b9b', marginTop: 7, marginBottom: 17 }}>화이트진로</Text>
-                        {/* </View> */}
-                        {/* </View> */}
-                        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-                          <Image source={require('../../icons/rate_stroke.png')} style={{ width: 30, height: 30, marginRight: 5 }} resizeMode='contain' />
-                          <Image source={require('../../icons/rate_stroke.png')} style={{ width: 30, height: 30, marginRight: 5 }} resizeMode='contain' />
-                          <Image source={require('../../icons/rate_stroke.png')} style={{ width: 30, height: 30, marginRight: 5 }} resizeMode='contain' />
-                          <Image source={require('../../icons/rate_stroke.png')} style={{ width: 30, height: 30, marginRight: 5 }} resizeMode='contain' />
-                          <Image source={require('../../icons/rate_stroke.png')} style={{ width: 30, height: 30, marginRight: 15 }} resizeMode='contain' />
-                          <Text style={{ color: '#9b9b9b', fontSize: 16, fontWeight: '500' }}>0.0</Text>
-                        </View>
-                      </View>
-                    </View>
-                    <View style={{ backgroundColor: '#9b9b9b', marginLeft: 18, height: 0.8, }} />
-                    <View style={{ backgroundColor: '#ffffff', flexDirection: 'row', paddingVertical: 23, paddingHorizontal: 18 }}>
-                      <Image style={{ width: 85, height: 104 }} source={require('../../images/cham.jpg')} />
-                      <View style={{ paddingLeft: 11, width: 240 }}>
-                        {/* <View style={{ flexDirection: 'row', marginBottom: 10 }}> */}
-                        {/* <View style={{ flex: 1, flexDirection: 'row', }}> */}
-                        <View style={{ marginTop: 12, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-                          <Text style={{ fontSize: 16, fontWeight: '600', color: '#000', }}>참이슬</Text>
-                          <Image style={{ width: 11, height: 14, }}
-                            source={require('../../icons/bookmark_fill_grey.png')} />
-                        </View>
-                        <Text style={{ fontSize: 12, color: '#9b9b9b', marginTop: 7, marginBottom: 17 }}>화이트진로</Text>
-                        {/* </View> */}
-                        {/* </View> */}
-                        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-                          <Image source={require('../../icons/rate_stroke.png')} style={{ width: 30, height: 30, marginRight: 5 }} resizeMode='contain' />
-                          <Image source={require('../../icons/rate_stroke.png')} style={{ width: 30, height: 30, marginRight: 5 }} resizeMode='contain' />
-                          <Image source={require('../../icons/rate_stroke.png')} style={{ width: 30, height: 30, marginRight: 5 }} resizeMode='contain' />
-                          <Image source={require('../../icons/rate_stroke.png')} style={{ width: 30, height: 30, marginRight: 5 }} resizeMode='contain' />
-                          <Image source={require('../../icons/rate_stroke.png')} style={{ width: 30, height: 30, marginRight: 15 }} resizeMode='contain' />
-                          <Text style={{ color: '#9b9b9b', fontSize: 16, fontWeight: '500' }}>0.0</Text>
-                        </View>
-                      </View>
-                    </View>
-                    <View style={{ backgroundColor: '#9b9b9b', marginLeft: 18, height: 0.8, }} />
-
+                    <FlatList
+                      data={this.state.mokupData}
+                      renderItem={({ item }) => (this._renderRankingList(item))}
+                      keyExtractor={item => item.id.toString()}
+                    />
                   </Content>
                 </Tab>
                 <Tab

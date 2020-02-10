@@ -36,6 +36,7 @@ export default class Search extends Component {
                                 placeholder='소주, 맥주, 양주, 와인을 검색해주세요.'
                                 placeholderTextColor='#9B9B9B'
                                 autoFocus
+
                             />
                             <TouchableOpacity>
                                 <Image source={require('../../icons/Search_black.png')} style={{ width: 25, height: 25 }} />

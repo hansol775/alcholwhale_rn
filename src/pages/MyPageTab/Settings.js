@@ -21,8 +21,7 @@ export default class Settings extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: null,
-      password: null,
+
     };
     this.window = Dimensions.get('window');
     this.inputWidth = this.window.width - 40;
@@ -165,3 +164,4 @@ export default class Settings extends Component {
     );
   }
 }
+

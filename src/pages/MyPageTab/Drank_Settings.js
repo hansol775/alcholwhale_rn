@@ -24,7 +24,8 @@ export default class Drank_Settings extends Component {
         this.state = {
             email: null,
             password: null,
-            tabFlag: 0
+            tabFlag: 0,
+            Flag: 0,
         };
         this.window = Dimensions.get('window');
         this.inputWidth = this.window.width - 40;
@@ -32,6 +33,10 @@ export default class Drank_Settings extends Component {
 
     changeTabScreen = (i) => {
         this.setState({ tabFlag: i })
+    }
+
+    _selectProduct = () => {
+
     }
 
     render() {
@@ -66,19 +71,22 @@ export default class Drank_Settings extends Component {
                                     </TabHeading>}>
 
                                 <Content>
-                                    <View style={{ backgroundColor: '#efefef', justifyContent: 'center', height: 289 }}>
-                                        {/* <Text style={{fontSize:12, marginLeft:30}}>총 {this.state.products.length}건</Text> */}
-
-                                        <View style={{ flex: 1, justifyContent: 'space-around', alignItems: 'center' }}>
-                                            {/* <FlatList
-                                                data={this.state.products}
-                                                numColumns={3}
-                                                renderItem={({item}) => ( this.renderProduct(item))}
-                                                keyExtractor={item => item.id}
-                                                removeClippedSubviews
-                                            /> */}
+                                    <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+                                        <View style={{ paddingVertical: 29, backgroundColor: '#efefef', flexDirection: 'row', justifyContent: 'space-between', height: 289 }}>
+                                            <TouchableOpacity onPress={this._selectProduct}>
+                                                <Image style={this.state.Flag == 0 ? styles.selectProduct : styles.defaultProduct}
+                                                    source={require('../../images/mokup_2.png')} />
+                                            </TouchableOpacity>
+                                            <TouchableOpacity >
+                                                <Image style={this.state.Flag == 1 ? styles.selectProduct : styles.defaultProduct}
+                                                    source={require('../../images/mokup_2.png')} />
+                                            </TouchableOpacity>
+                                            <TouchableOpacity>
+                                                <Image style={this.state.Flag == 2 ? styles.selectProduct : styles.defaultProduct}
+                                                    source={require('../../images/mokup_2.png')} />
+                                            </TouchableOpacity>
                                         </View>
-                                    </View>
+                                    </ScrollView>
                                     <View style={{ marginBottom: 20, borderBottomColor: '#BB996A', borderBottomWidth: 4 }} >
                                         <View style={{ margin: 23, marginBottom: 20 }}>
                                             <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
@@ -259,4 +267,10 @@ const styles = {
         fontSize: 16,
         marginTop: 3
     },
+    selectProduct: {
+        width: 77, height: 222, marginHorizontal: 37
+    },
+    defaultProduct: {
+        width: 77, height: 222, marginHorizontal: 37, opacity: 0.2
+    }
 }
