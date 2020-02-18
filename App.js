@@ -5,6 +5,8 @@ import {Provider} from 'mobx-react';
 import Router from "./system/router";
 import rootStore from './system/stores';
 
+console.log = () => {};
+
 export default class App extends Component {
     render() {
         return (
