@@ -191,7 +191,7 @@ const AppNavigator = createStackNavigator(
     DrinkDetail: { screen: DrinkDetail },
   },
   {
-    initialRouteName: 'Splash',
+    initialRouteName: 'MainTab',
     transitionConfig: navigation => {
       return {
         transitionSpec: {
